@@ -1,0 +1,61 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: CampusPulseAi
+
+  ai:
+    openai:
+      api-key: {{OPENAI_API_KEY}}
+
+  jwt:
+    secret: {{JWT_SECRET_KEY}}
+    expiration: 86400000 # 1 day in ms
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/campuspulseai   #jdbc:postgresql://localhost:3307/campus_pulse
+    username: postgres
+    password: qeema**123 #postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: campuspulseai@gmail.com
+    password: mjbc kxzs uhyk bczm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: true
+
+springdoc:
+  swagger-ui:
+    path: /docs
+
+cloudinary:
+  cloud_name: dct8rg7di
+  api_key: 614467574267491
+  api_secret: OqeWh56aS8q9ncVhmNB4enxNk4k
+  url_pattern: ^https://res\.cloudinary\.com/dct8rg7di.*$
